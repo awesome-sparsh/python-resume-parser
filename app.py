@@ -8,7 +8,8 @@ from datetime import datetime, date
 
 import io
 
-app = FastAPI()
+#app = FastAPI()
+app = FastAPI(docs_url="/docs", root_path="/parser") 
 
 # Add CORS middleware
 app.add_middleware(
