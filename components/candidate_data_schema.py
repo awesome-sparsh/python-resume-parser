@@ -15,7 +15,7 @@ class job(BaseModel):
     job_company: Optional[str] = Field(description="Name of the company")
     job_title: Optional[str] = Field(description="Job titile")
     job_description: Optional[str] = Field(
-        description="Information about the job and what did the candidate do in it if available. Return all content provided.")
+        description="Information about the job and what did the candidate do in it if available. Return all data that is part of the section be it in different paragraphs or new lines")
     started_at: Optional[date] = Field(
         description="what date did the candidate start this job? Return None if not available")
     ended_at: Optional[date] = Field(description="what date did the candidate end this job? Return None if not available")
@@ -33,12 +33,12 @@ class degree(BaseModel):
 class Project(BaseModel):
     """Model to represent a project with name and description."""
     name: Optional[str] = Field(description="Name of the project")
-    description: Optional[str] = Field(description="Description of the project. Return all content provided, including tech stacks.")
+    description: Optional[str] = Field(description="Description of the project. Return all content provided, including tech stacks. Return all data that is part of the section be it in different paragraphs or new lines")
 
 class Activities_and_Certification(BaseModel):
     name: Optional[str] = Field(description="Name of the certification")
     organization: Optional[str] = Field(description="read name field to find out organization mentioned. Return null if not given")
-    description: Optional[str] = Field(description="information about the certificate or activity or publications. Return null if not provided")
+    description: Optional[str] = Field(description="information about the certificate or activity or publications. Return null if not provided. Return all data that is part of the section be it in different paragraphs or new lines")
 
 
 class candidate(BaseModel):
@@ -50,14 +50,14 @@ class candidate(BaseModel):
     name: Optional[str] = Field(description="name")
     first_name: Optional[str] = Field(description="First name")
     last_name: Optional[str] = Field(description="Last name")
-    country__phone_code: Optional[str] = Field(description="Country phone code, examples: +1 or +39")
+    country_phone_code: Optional[str] = Field(description="Country phone code, examples: +1 or +39")
     phone_number: Optional[int] = Field(description="Phone number, without country phone code")
     email: Optional[str] = Field(description="Email address")
     country: Optional[str] = Field(description="country")
     degrees: Optional[List[degree]] = Field(description="list of all candidate's degrees")
     jobs: Optional[List[job]] = Field(description="Only include jobs the candidate listed in a work experience section. Return None if he hasn't listed any.")
     skills: Optional[list[str]] = Field(description="list of candidate's skills that are relevant to the job")
-    description: Optional[str] = Field(description="a short description or a autobiography of the candidate describing his qualities and proefessional goals. Return None if hasnt listed one")
+    description: Optional[str] = Field(description="a description or a autobiography of the candidate describing his qualities and proefessional goals. Return None if hasnt listed one. Return all data that is part of the section be it in different paragraphs or new lines")
     #links: Optional[list[Link]] = Field(description="list of candidate ocial media links such as twitter, linkedin, instagram or an url for a portfolio website. Return None if doesnt exist")
     linkedin: Optional[str] = Field(description="candidates linkedin handle web url. Return None if doesnt exist")
     instagram: Optional[str] = Field(description="candidates instagram handle web url. Return None if doesnt exist")
